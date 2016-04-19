@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/verfity.css"> 
+    <title>Javascipt First Project</title>
+    <script src="js/verfity.js" type="text/javascript">  </script>
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Gem style -->
+	
+    <script src="js/ajaxToAction"></script>
+    
+</head>
+<body onload="createCode()">
+	<header role="banner">
+		<div id="cd-logo"><a href="#"><h5>Hello world!</h5></a></div>
+
+		<nav class="main-nav">
+			<ul>
+				<!-- inser more links here -->
+				<li><a class="cd-signin" href="#0">登陆</a></li>
+				<li><a class="cd-signup" href="#0">注册</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<ul class="cd-switcher">
+				<li><a href="#0">登陆</a></li>
+				<li><a href="#0">注册新账号</a></li>
+			</ul>
+
+			<div id="cd-login"> <!-- log in form -->
+				<form class="cd-form" action="dbhelp.php" method="POST">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">用户名</label>
+						<input class="full-width has-padding has-border" name="sname" placeholder="请输入用户名">
+						<span class="cd-error-message">没有这个用户名，请验证或点击忘记密码</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">密码</label>
+						<input class="full-width has-padding has-border" name="spd" id="signin-password" type="text"  placeholder="请输入密码">
+						<a href="#0" class="hide-password">hide</a>
+						<span class="cd-error-message">密码错误</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">记住密码</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="登陆">
+					</p>
+				</form>
+				
+				<p class="cd-form-bottom-message"><a href="#0">忘记密码?</a></p>
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-login -->
+
+			<div id="cd-signup"> <!-- sign up form -->
+				<form class="cd-form" action="register1.php" method="POST">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">用户名</label>
+						<input class="full-width has-padding has-border" name="signun" id="signup-username" type="text" placeholder="用户名">
+						<span class="cd-error-message">您输入的用户名存在！请重新输入！或输入格式不对</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">E-mail</label>
+						<input class="full-width has-padding has-border" name="sgemail" id="signup-email" placeholder="E-mail">
+						<span class="cd-error-message">您填写的邮箱格式不正确，必须包含@.</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">密码</label>
+						<input class="full-width has-padding has-border" name="pw1" id="signup-password" type="password"  placeholder="密码">
+						<!--<a href="#0" class="hide-password">Hide</a> -->
+						<span name="showerrpw1" class="cd-error-message">密码过短,不能少于八位数！</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">密码</label>
+						<input class="full-width has-padding has-border" name="pw2" id="password1" type="password"  placeholder="密码">
+						<!-- <a href="#0" class="hide-password">Hide</a> -->
+						<span class="cd-error-message">两次输入密码不一致</span>
+					</p>
+                    
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">手机号</label>
+						<input class="full-width has-padding has-border" name="phone" id="tel" type="text"  placeholder="手机号">
+						<span class="cd-error-message">请输入正确的中国手机号</span>
+					</p>
+                    
+                    <p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">地址</label>
+						<input class="full-width has-padding has-border" name="sgaddress" id="address" type="text"  placeholder="地址">
+						<span class="cd-error-message">地址不能为空，请重新输入</span>
+					</p>
+                    
+                    <p class="fieldset">
+					   <table>
+                            <tr>
+                            <td></td><td> <div class="code" id="checkCode" onclick="createCode()" ></div></td>
+                            <td><a  href="#" onclick="createCode()">看不清换一张</a></td>
+                            </tr>
+                       </table>
+                     </p>
+                      <p class="fieldset"> 
+                            <label class="image-replace cd-password" for="signup-password">请输入验证码</label>
+						<input class="full-width has-padding has-border" name="vertif" id="inputCode" type="text"  placeholder="请输入验证码">
+                            <span class="cd-error-message">验证码错误,请重新输入！</span>	
+                            
+					</p>
+
+					<p class="fieldset">
+						<input id="Button1"  class="full-width has-padding" type="submit" value="注册账号">
+					</p>
+				</form>
+
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-signup -->
+
+			<div id="cd-reset-password"> <!-- reset password form -->
+				<p class="cd-form-message">忘记密码？请输入账号以及对于的注册邮箱和手机</p>
+
+				<form class="cd-form" action="resetpw.php" method="POST">
+                    <p class="fieldset">
+						
+					</p>
+                    <p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">用户名</label>
+						<input class="full-width has-padding has-border" name="resetname"  placeholder="请输入用户名">
+						<span class="cd-error-message">连账号都忘记了？没有这个用户名噢，请重新输入</span>
+					</p>
+                    
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">邮箱</label>
+						<input class="full-width has-padding has-border" name="resetmail" id="reset-email" type="email" placeholder="邮箱">
+						<span class="cd-error-message">邮箱格式错误</span>
+					</p>
+                    
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="reset-email">手机号</label>
+						<input class="full-width has-padding has-border" name="resetphone"  placeholder="请输入对应的手机号">
+						<span class="cd-error-message">手机格式错误！</span>
+					</p>
+                    
+                    <p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">密码</label>
+						<input class="full-width has-padding has-border" name="resetpw1" id="signup-password" type="password"  placeholder="密码">
+						<!--<a href="#0" class="hide-password">Hide</a> -->
+						<span name="showerrpw1" class="cd-error-message">密码过短,不能少于八位数！</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">密码</label>
+						<input class="full-width has-padding has-border" name="resetpw2" id="password1" type="password"  placeholder="请再次输入密码">
+						<!-- <a href="#0" class="hide-password">Hide</a> -->
+						<span class="cd-error-message">两次输入密码不一致</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="重设密码">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">返回登陆</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="#0" class="cd-close-form">关闭</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
+<script src="js/jquery.min.js"></script>
+<script src="js/main.js"></script> <!-- Gem jQuery -->
+</body>
+</html>
